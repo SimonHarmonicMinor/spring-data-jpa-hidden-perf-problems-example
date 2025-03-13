@@ -14,6 +14,8 @@ public class Farm {
 
     private String name;
 
+    private String description;
+
     @OneToMany(mappedBy = "farm")
     private List<Chicken> chickens;
 
