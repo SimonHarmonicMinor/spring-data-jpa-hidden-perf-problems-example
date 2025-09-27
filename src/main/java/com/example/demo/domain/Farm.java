@@ -4,12 +4,15 @@ import jakarta.persistence.*;
 import lombok.Getter;
 
 import java.util.List;
+import java.util.Set;
+
+import static jakarta.persistence.GenerationType.IDENTITY;
 
 @Entity
 @Getter
 public class Farm {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = IDENTITY)
     private Long id;
 
     private String name;
@@ -17,8 +20,17 @@ public class Farm {
     private String description;
 
     @OneToMany(mappedBy = "farm")
-    private List<Chicken> chickens;
+    private Set<Chicken> chickens;
 
     @OneToMany(mappedBy = "farm")
     private List<Cow> cows;
+
+    public void update(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
+
+    public boolean isOpen() {
+        return true;
+    }
 }

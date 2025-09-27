@@ -3,7 +3,7 @@ package com.example.demo.domain;
 import jakarta.persistence.*;
 import lombok.Getter;
 
-import java.util.List;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -18,5 +18,5 @@ public class Chicken {
     private Farm farm;
 
     @OneToMany(mappedBy = "chicken")
-    private List<Egg> eggs;
+    private Set<Egg> eggs;
 }
