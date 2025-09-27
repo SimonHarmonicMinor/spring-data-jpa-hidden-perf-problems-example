@@ -12,7 +12,8 @@ public class PgTestContainersConfig {
 	@Bean
 	@ServiceConnection
 	PostgreSQLContainer<?> postgresContainer() {
-		return new PostgreSQLContainer<>(DockerImageName.parse("postgres:13"));
+		return new PostgreSQLContainer<>(DockerImageName.parse("postgres:13"))
+				.withUrlParam("reWriteBatchedInserts", "true");
 	}
 
 }

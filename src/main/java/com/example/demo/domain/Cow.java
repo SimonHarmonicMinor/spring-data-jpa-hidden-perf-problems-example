@@ -7,7 +7,8 @@ import lombok.Getter;
 @Getter
 public class Cow {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(generator = "cow_seq")
+    @SequenceGenerator(allocationSize = 500, sequenceName = "cow_id_seq", name = "cow_seq")
     private Long id;
 
     private String name;
